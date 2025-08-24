@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function validar(){
+                let valor = document.getElementById("texto2").value;
+                if (valor === ""){
+                    console.log("Texto vacio");
+                    document.getElementById("valTexto2").style.display = "";
+                } else {
+                    document.getElementById("valTexto2").style.display = "none";
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <button type="button" onclick="alert('Sigue las instrucciones en ');">Presiona aquí</button>
+        <input type="text" id="texto2" onblur="validar();" /><span id="valTexto2" style="display:none; color:rgb(197, 41, 41)">Debes escribir aquí</span>
+        <p id="msg"></p>
+        <select name="opciones" id="op"></select>
+        <script>
+            document.getElementById("op").innerHTML='<option value="1">Uno</option><option value="2">Dos</option><option value="3">Tres</option><option value="4">Cuatro</option><option value="5">Cinco</option>';
+        </script>
+    </body>
+</html>
