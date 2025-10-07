@@ -1,89 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <title>Big Bite</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <style>
+            body {
+            font-family: "Georgia", serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #723d27;
+            }
+
+            .container {
+            margin-top: 90px;
+            margin-left: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            }
+
+            .card {
+            background: #9e834f;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            }
+
+            .card h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            }
+
+            button {
+                background-color: #58352c;
+                border:#5A3E36;
+                border-radius: 10px;
+                text-align: center;
+                margin: 10px 2px;
+                padding: 7px 15px;
+                color: whitesmoke;
+            }
+            .navbar-custom {
+                background-color: #522f14;
+            }
+        </style>
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top navbar-custom">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"></a>
+                <a class="navbar-brand" href="B-6Catalogo.html">Catalogo</a>
                 <form class="form-inline ml-auto" action="/action_page.php">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
+                    <input class="form-control mr-0" type="text" placeholder="Buscar">
                 </form>
             </div>
         </nav>
 
         <div class="container-fluid" style="margin-top: 90px;">
-            <div class="row d-flex-justify-content-start">
+            <div class="row">
                     <div class="col-sm-2">
                         <div class="container">
-                            <div class="col-sm-2 d-flex-justify-content-start"></div>
+                            <div class="col-sm-1 d-flex-justify-content-start">
+                                <h4 style="color: whitesmoke">Categorias</h4>
+                            </div>
                             <ul class="list-unstyled">
-                                <li><a class="btn btn-link" href="#"></a></li>
-                                <li><a class="btn btn-link" href="#"></a></li>
-                                <li><a class="btn btn-link" href="#"></a></li>
-                                <li><a class="btn btn-link" href="#"></a></li>
-                                <li><a class="btn btn-link" href="#"></a></li>
-                            </ul>
+                                <li><a class="btn btn-link" style="color: whitesmoke" href="B-6Catalogo.html">Hamburguesas</a></li>
+                                <li><a class="btn btn-link" style="color: whitesmoke" href="B-6Catalogo.html">Vegano</a></li>
+                                <li><a class="btn btn-link" style="color: whitesmoke" href="B-6Catalogo.html">Acompañamiento</a></li>
+                                <li><a class="btn btn-link" style="color: whitesmoke" href="B-6Catalogo.html">Extras</a></li>
                         </div>    
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-10">
                         <div class="container">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="img.jpg" class="rounded" alt="Producto">
-                                </div>
-                                <div class="col">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-1 d-flex justify-content-start"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 d-flex justify-content-start"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="card p-3">
+                                <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/camarones_butterfly_17482968455wUdp1.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvY2FtYXJvbmVzX2J1dHRlcmZseV8xNzQ4Mjk2ODQ1NXdVZHAxLmpwZyJ9.uAJq0JfLlEfKJHeoPyWYRQJXo81an9a2huz4UmKAuIY" class="img-fluid rounded" alt="Camarones Butterfly">
+                                        <h3 style="text-align: left; color: whitesmoke;">Camarones Butterfly</h3>
+                                        <p style="text-align: left; color: whitesmoke;">$ 8.990<br>Crujientes Camarones Ecuatorianos En Corte Mariposa, Fritos En Panko Acompañados De Salsa Agridulce O Tu Mayo A Elección.</p>
+                                        <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
                             </div>
-                            <div class="col-sm-3 d-flex-justify-content-end"></div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="img.jpg" class="rounded" alt="Producto">
-                                </div>
-                                <div class="col">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-1 d-flex justify-content-start"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 d-flex justify-content-start"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="card p-3">
+                                <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/doble_cuarto_burgus_burger__papas_174292762264amrd.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvZG9ibGVfY3VhcnRvX2J1cmd1c19idXJnZXJfX3BhcGFzXzE3NDI5Mjc2MjI2NGFtcmQuanBnIn0.eHts5i3vPatEGzHyb-Jx9KnExcMP-NcvAVTMr8JlmKc" class="img-fluid rounded" alt="Onion Rings (8 unds.)">
+                                <h3 style="text-align: left; color: whitesmoke;">Onion Rings (8 unds.)</h3>
+                                <p style="text-align: left; color: whitesmoke;">$ 6.590<br>Crocantes Aros De Cebollas Fritos En Panko, Acompañados De Salsa Bbq, Salsa Agridulce O Tu Mayo A Elección.</p>
+                                <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
                             </div>
-                            <div class="col-sm-3 d-flex-justify-content-end"></div>
-                        </div>
-                    </div>    
-                    <div class="col-md-4">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="img.jpg" class="rounded" alt="Producto">
-                                </div>
-                                <div class="col">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-1 d-flex justify-content-start"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 d-flex justify-content-start"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 d-flex-justify-content-end"></div>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Big Bite</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <style>
+            body {
+            font-family: "Georgia", serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #723d27;
+            }
+
+            .container {
+            margin-top: 90px;
+            margin-left: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            }
+
+            .card {
+            background: #9e834f;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            }
+
+            .card h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            }
+
+            button {
+                background-color: #58352c;
+                border:#5A3E36;
+                border-radius: 10px;
+                text-align: center;
+                margin: 10px 2px;
+                padding: 7px 15px;
+                color: whitesmoke;
+            }
+            .navbar-custom {
+                background-color: #522f14;
+            }
+        </style>
+    </head>
+    <body>
+
+        <nav class="navbar-custom navbar navbar-expand-sm navbar-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Catalogo</a>
+                <a class="btn btn-link" style="color: whitesmoke" href="B-2InicioSesion.html">Inicio Sesion</a>
+                <a class="btn btn-link" style="color: whitesmoke" href="B-18ValidacionDireccion.html">Configuracion Direccion</a>
+                <form class="form-inline ml-auto" action="/action_page.php">
+                    <input class="form-control" type="text" placeholder="Buscar">
+                </form>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="card p-3">
+                        <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/doble_clsica_new_yorker_1756606320NoJbn1.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvZG9ibGVfY2xzaWNhX25ld195b3JrZXJfMTc1NjYwNjMyME5vSmJuMS5qcGcifQ.JKB542PFjGqc5p-Qjc1ZOm1HR-pkyI6JEw-6FS-IMQc" class="img-fluid rounded" alt="Producto">
+                        <h3 style="text-align: left; color: whitesmoke;">Doble Clásica New Yorker</h3>
+                        <p style="text-align: left; color: whitesmoke;">$ 9.390<br>Doble Hamburguesa Smash, Salsa Especial De La Casa, Pepinillos, Cebolla, Lechuga, Tomate, Queso Cheddar.</p>
+                        <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
+            </div>
+            <div class="card p-2">
+                        <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/clsica_burger__papas__bebida_lata_1748280809UR0wmL.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvY2xzaWNhX2J1cmdlcl9fcGFwYXNfX2JlYmlkYV9sYXRhXzE3NDgyODA4MDlVUjB3bUwuanBnIn0.8sQoH-5OTpylN7Ss6v0qsgHbmvq3jiQugoTtMrFoMxI" class="img-fluid rounded" alt="Clásica Burger + Papas + Bebida Lata">
+                        <h3 style="text-align: left; color: whitesmoke;">Clásica Burger + Papas + Bebida Lata</h3>
+                        <p style="text-align: left; color: whitesmoke;">$ 12.590<br>Base De Lechuga Escarola Y Tomate, Queso Cheddar, Cebolla Morada, Pepinillos y Mayonesa.<br> Incluye una bebida en lata.</p>
+                        <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
+            </div>
+            <div class="card p-3">
+                        <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/cuarto_burgus__papas__bebida_lata_1748281623N4J4b9.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvY3VhcnRvX2J1cmd1c19fcGFwYXNfX2JlYmlkYV9sYXRhXzE3NDgyODE2MjNONEo0YjkuanBnIn0.lK4gyS2kebuC_cJy6kqoF0qPvJIhB72fNCxCbHBY6P4" class="img-fluid rounded" alt="Producto">
+                        <h3 style="text-align: left; color: whitesmoke;">Cuarto Burgués + Papas + Bebida Lata</h3>
+                        <p style="text-align: left; color: whitesmoke;">$ 12.590<br>Queso Cheddar, Cebolla Morada, Mix De Pepinillos. Mayonesa Y Kepchup Bbq. <br>Incluye bebida en Lata</p>
+                        <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
+            </div>
+            <div class="card p-3">
+                        <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/clasica_1738595457aQlZrW.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvY2xhc2ljYV8xNzM4NTk1NDU3YVFsWnJXLmpwZyJ9.E0knydKHAWLIhu4r3CPs8KNuGeNtcAdt_vKEeoQgIdM" class="img-fluid rounded" alt="Producto">
+                        <h3 style="text-align: left; color: whitesmoke;">Clásica  Burger + Papas</h3>
+                        <p style="text-align: left; color: whitesmoke;">$ 10.990<br>Base De Lechuga Escarola Y Tomate, Queso Cheddar, Cebolla Morada, Pepinillos Y Mayonesa.</p>
+                        <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
+            </div>
+        </div>
+    </body>
+</html>

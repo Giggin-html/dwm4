@@ -17,6 +17,7 @@
             }
             .container {
                 background-color: #9e834f;
+                border: #3e2960;
                 border-radius: 10px;
                 width: 80%;
                 max-width: 400px;
@@ -39,50 +40,53 @@
             .navbar-custom {
                 background-color: #522f14;
             }
+        
+
         </style>
         <script>
-            function codigo(){
-                let codigo = document.getElementById("cdg").value;
-                if (codigo == "12345"){
-                    alert("Contraseña Actualizada")
+            function registrarse(){
+                let email = document.getElementById("email").value;
+                let pass = document.getElementById("pwd").value;
+                if (email == "giggin@example.com" && pass == "Prueba1"){
+                    location.href = "B-6Catalogo.html";
                 }
 
-                else {
-                    alert("El token a Caducado")
-                }
-            }
-
-            function soli(){
-                let solicitud = document.getElementById("sol").value;
-                let codigo = document.getElementById("cdg").value;
-                if (codigo == ""){
-                    alert("Nuevo codigo reenviado")
+                if (email == "Gigin23@example.com" && pass == "/Prueba_"){
+                    alert("La contraseña no cumple requisitos");
                 }
             }
         </script>
     </head>
     <body>
-        
+
         <nav class="navbar-custom navbar navbar-expand-sm navbar-dark fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="B-2InicioSesion.html">Inicio Sesion</a>
-                <a class="btn btn-link" style="color: whitesmoke" href="B-1Registrar.html">Registrarse</a>
+                <a class="navbar-brand" href="#">Registro</a>
+                <a class="btn btn-link" style="color: whitesmoke" href="B-2InicioSesion.html">Inicio Sesion</a>
             </div>
         </nav>
-        <div class="container border">
-            <h5 style="margin-bottom: 0px; color: whitesmoke">Recuperacion Contraseña</h5>
+
+        <div class="container">
+            <h5 style="margin-bottom: 0px; color: whitesmoke">Registro</h5>
             <hr style="border-color: whitesmoke; opacity: 0.6;">
             <form>
-                <div class="form-group" style="margin-bottom: 0;">
-                    <label for="cdg" class="form-label">Ingrese Codigo:</label>
-                    <input type="password" class="form-control" id="cdg" name="codg" style="background-color:azure">
-                    <div class="row">
-                        <button type="button" class="btn btn-link" style="color: whitesmoke" id="sol" onclick="soli()">Solicitar Codigo</button>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 d-flex justify-content-center">
-                            <button type="button" onclick="codigo()">Aceptar</button>
-                        </div>
+                <div class="form-group">
+                    <label for="email">Usuario:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Ingresar email" name="email" style="border-radius: 10px;">
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="pwd">Contraseña:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Ingresar contraseña" name="pswd" style="border-radius: 10px;">
+                    <h6 style="color: whitesmoke; font-size: small;">
+                        *La contraseña requiere mínimo 6 caracteres (1 mayúscula, 1 digito)
+                    </h6>
+                </div>
+                <hr style="border-color: whitesmoke; opacity: 0.6;">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-end">
+                        <button type="button" onclick="registrarse()">Registrar</button>
                     </div>
                 </div>
             </form>

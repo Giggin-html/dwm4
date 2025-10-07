@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Big Bite</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                background: #723d27;
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                font-family: "Georgia", serif;
+            }
+            .container {
+                background-color: #9e834f;
+                border-radius: 10px;
+                width: 80%;
+                max-width: 400px;
+                padding: 20px 25px;
+            }
+            label {
+                color: whitesmoke;
+                border-radius: 10px;
+            }
+            button {
+                background-color: #58352c;
+                border:#5A3E36;
+                border-radius: 10px;
+                text-align: center;
+                margin: 4px 2px;
+                padding: 7px 15px;
+                color: whitesmoke;
+            }
+        </style>
+        <script>
+            function inicioSesion(){
+                let email = document.getElementById("email").value;
+                let pass = document.getElementById("pwd").value;
+                if (email == "giggin@example.com" && pass == "Prueba1"){
+                    location.href = "B-6Catalogo.html";
+                }
+
+                if (email == "Gigin23@example.com" && pass == "Prueba2"){
+                    location.href = "B-22GestionProductos.html";
+                }
+
+                if (email == "Gigin@example.com" && pass == "Prueba3"){
+                    location.href = "B-23PedidosDespachoConfi.html";
+                }
+
+                if (email == "Giggin@example.com" && pass == "Prueba4"){
+                    location.href = "B-4GestionPerfil.html";
+                }
+            }
+        </script>
+    </head>
+    <body>
+
+        <div class="container border">
+            <h5 style="margin-bottom: 0px; color: whitesmoke">Inicio Sesion</h5>
+            <hr style="border-color: whitesmoke; opacity: 0.6;">
+            <form>
+                <div class="form-group">
+                    <label for="email">Usuario:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Ingresar email" name="email" style="border-radius: 10px;">
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="pwd">Contraseña:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Ingresar contraseña" name="pswd" style="border-radius: 10px;">
+                    <h6 style="color: whitesmoke; font-size: small;">
+                        *La contraseña requiere mínimo 6 caracteres (1 mayúscula, 1 digito)
+                    </h6>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-start">
+                        <button type="button" onclick="inicioSesion()">Iniciar Sesion</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-start">
+                        <button type="button" class="btn btn-link" style="color: whitesmoke;" onclick="location.href='B-3RecuperacionContraseña.html'">Recuperar Contraseña</button>
+                    </div>
+                </div>
+                <hr style="border-color: whitesmoke; opacity: 0.6;">
+                <label>Nuevo Usuario:</label>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-start">
+                        <button type="button" onclick="location.href='B-1Registrar.html'">Registrarse</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

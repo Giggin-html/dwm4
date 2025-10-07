@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Big Bite</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <style>
+            body {
+                font-family: "Georgia", serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: left;
+                align-items: center;
+                min-height: 100vh;
+                background-color: #723d27;
+            }
+
+            .container {
+                margin-top: 90px;
+                margin-left: 0;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+                width: 90%;
+                max-width: 1200px;
+            }
+
+            .card {
+                background: #9e834f;
+                border: 1px solid #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+
+            .card h3 {
+                margin: 0 0 10px;
+                font-size: 1.5em;
+            }
+
+            button {
+                background-color: #58352c;
+                border: #5A3E36;
+                border-radius: 10px;
+                text-align: center;
+                margin: 10px 2px;
+                padding: 7px 15px;
+                color: whitesmoke;
+            }
+            .navbar-custom {
+                background-color: #522f14;
+            }
+        </style>
+
+        <script>
+            function busqueda(event) {
+                event.preventDefault();
+                let bus = document.getElementById("busq").value.trim().toLowerCase();
+
+                if (bus === "onions") {
+                    window.location.href = "B-11ProductoNoDisponible.html";
+                } else {
+                    alert("Producto no encontrado");
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top navbar-custom">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Catalogo</a>
+                <form class="form-inline ml-auto" onsubmit="busqueda(event)">
+                    <input class="form-control mr-0" type="text" placeholder="Buscar" id="busq">
+                </form>
+            </div>
+        </nav>
+
+        <div class="container-fluid" style="margin-top: 90px;">
+            <div class="row d-flex-justify-content-start">
+                <div class="col-sm-2">
+                    <div class="container">
+                        <div class="col-sm-1 d-flex-justify-content-start">
+                            <h4 style="color: whitesmoke">Categorias</h4>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li><a class="btn btn-link" style="color: whitesmoke" href="B-6Catalogo.html">Hamburguesas</a></li>
+                            <li><a class="btn btn-link" style="color: whitesmoke" href="B-6Catalogo.html">Vegano</a></li>
+                            <li><a class="btn btn-link" style="color: whitesmoke" href="B-6Catalogo.html">Acompañamiento</a></li>
+                            <li><a class="btn btn-link" style="color: whitesmoke" href="B-6Catalogo.html">Extras</a></li>
+                        </ul>
+                    </div>    
+                </div>
+
+                <div class="col-md-10">
+                    <div class="container">
+                        <div class="card p-3">
+                            <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/doble_clsica_burger__papas_1742927621E929eB.jpg" class="img-fluid rounded" alt="Doble Clásica Burger + Papas">
+                            <h3 style="text-align: left; color: whitesmoke;">Doble Clásica Burger + Papas</h3>
+                            <p style="text-align: left; color: whitesmoke;">$ 13.190<br>Base De Lechuga Escarola Y Tomate, Queso Cheddar, Cebolla Morada, Pepinillos Y Mayonesa</p>
+                            <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
+                        </div>
+
+                        <div class="card p-3">
+                            <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/doble_cuarto_burgus_burger__papas_174292762264amrd.jpg" class="img-fluid rounded" alt="Doble Cuarto Burgués Burger + Papas">
+                            <h3 style="text-align: left; color: whitesmoke;">Doble Cuarto Burgués Burger + Papas</h3>
+                            <p style="text-align: left; color: whitesmoke;">$ 13.190<br>Queso Cheddar, Cebolla Morada, Mix De Pepinillos. Mayonesa Y Kepchup Bbq.</p>
+                            <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
+                        </div>
+
+                        <div class="card p-3">
+                            <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/doble_camarona_burger__papas_1748296844xU6L5P.jpg" class="img-fluid rounded" alt="Doble Camarona Burger + Papas">
+                            <h3 style="text-align: left; color: whitesmoke;">Doble Camarona Burger + Papas</h3>
+                            <p style="text-align: left; color: whitesmoke;">$ 15.190<br>Queso Crema, Tomates Confitados, Camarones Grillados Y Mayo Ciboulette.</p>
+                            <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
+                        </div>
+
+                        <div class="card p-3">
+                            <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/doble_avocado_burger__papas_1746216015cnlBHl.jpg" class="img-fluid rounded" alt="Doble Avocado Burger + Papas">
+                            <h3 style="text-align: left; color: whitesmoke;">Doble Avocado Burger + Papas</h3>
+                            <p style="text-align: left; color: whitesmoke;">$ 15.590<br>Sobre Una Base De Rúcula Y Cubierta De Tocino, Queso Mozzarella, Palta En Abanico Y Mayo Ciboullette.</p>
+                            <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

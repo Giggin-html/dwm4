@@ -1,121 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <title>Big Bite</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <style>
+            body {
+            font-family: "Georgia", serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #723d27;
+            }
+
+            .container {
+            margin-top: 90px;
+            margin-left: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            }
+
+            .card {
+            background: #9e834f;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            }
+
+            .card h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            }
+
+            button {
+                background-color: #58352c;
+                border:#5A3E36;
+                border-radius: 10px;
+                text-align: center;
+                margin: 10px 2px;
+                padding: 7px 15px;
+                color: whitesmoke;
+            }
+            .navbar-custom {
+                background-color: #522f14;
+            }
+        </style>
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top navbar-custom">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"></a>
+                <a class="navbar-brand" href="B-6Catalogo.html">Catalogo</a>
                 <form class="form-inline ml-auto" action="/action_page.php">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
+                    <input class="form-control mr-0" type="text" placeholder="Buscar">
                 </form>
             </div>
         </nav>
 
         <div class="container-fluid" style="margin-top: 90px;">
-            <div class="row d-flex-justify-content-start">
+            <div class="row">
                     <div class="col-sm-2">
                         <div class="container">
-                            <div class="col-sm-2 d-flex-justify-content-start"></div>
+                            <div class="col-sm-1 d-flex-justify-content-start">
+                                <h4 style="color: whitesmoke">Categorias</h4>
+                            </div>
                             <ul class="list-unstyled">
-                                <li><a class="btn btn-link" href="#"></a></li>
-                                <li><a class="btn btn-link" href="#"></a></li>
-                                <li><a class="btn btn-link" href="#"></a></li>
-                                <li><a class="btn btn-link" href="#"></a></li>
-                                <li><a class="btn btn-link" href="#"></a></li>
+                                <li><a class="btn btn-link" style="color: whitesmoke" href="B-6Catalogo.html">Hamburguesas</a></li>
+                                <li><a class="btn btn-link" style="color: whitesmoke" href="B-6Catalogo.html">Vegano</a></li>
+                                <li><a class="btn btn-link" style="color: whitesmoke" href="B-6Catalogo.html">Acompañamiento</a></li>
+                                <li><a class="btn btn-link" style="color: whitesmoke" href="B-6Catalogo.html">Extras</a></li>
+                                <li><a class="btn btn-link" style="color: whitesmoke" href="B-11ProductoNoDisponible.html">Productos No Disponibles</a></li>
                             </ul>
                         </div>    
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-10">
                         <div class="container">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="img.jpg" class="rounded" alt="Producto">
-                                </div>
-                                <div class="col">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-1 d-flex justify-content-start"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 d-flex justify-content-start"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="card p-3">
+                                <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/doble_clsica_burger__papas_1742927621E929eB.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvZG9ibGVfY2xzaWNhX2J1cmdlcl9fcGFwYXNfMTc0MjkyNzYyMUU5MjllQi5qcGcifQ.wQThfkGh4LartzwuNG5H08fQWnG_6JkWQF_c38VZFjo" class="img-fluid rounded" alt="Doble Clásica Burger + Papas">
+                                        <h3 style="text-align: left; color: whitesmoke;">Doble Clásica Burger + Papas</h3>
+                                        <p style="text-align: left; color: whitesmoke;">$ 13.190<br>Base De Lechuga Escarola Y Tomate, Queso Cheddar, Cebolla Morada, Pepinillos Y Mayonesa</p>
+                                        <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
                             </div>
-                            <div class="col-sm-3 d-flex-justify-content-end"></div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="img.jpg" class="rounded" alt="Producto">
-                                </div>
-                                <div class="col">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-1 d-flex justify-content-start"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 d-flex justify-content-start"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="card p-3">
+                                <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/doble_cuarto_burgus_burger__papas_174292762264amrd.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvZG9ibGVfY3VhcnRvX2J1cmd1c19idXJnZXJfX3BhcGFzXzE3NDI5Mjc2MjI2NGFtcmQuanBnIn0.eHts5i3vPatEGzHyb-Jx9KnExcMP-NcvAVTMr8JlmKc" class="img-fluid rounded" alt="Doble Cuarto Burgués Burger + Papas">
+                                <h3 style="text-align: left; color: whitesmoke;">Doble Cuarto Burgués Burger + Papas</h3>
+                                <p style="text-align: left; color: whitesmoke;">$ 13.190<br>Queso Cheddar, Cebolla Morada, Mix De Pepinillos. Mayonesa Y Kepchup Bbq.</p>
+                                <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
                             </div>
-                            <div class="col-sm-3 d-flex-justify-content-end"></div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="img.jpg" class="rounded" alt="Producto">
-                                </div>
-                                <div class="col">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-1 d-flex justify-content-start"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 d-flex justify-content-start"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="card p-3">
+                                <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/doble_camarona_burger__papas_1748296844xU6L5P.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvZG9ibGVfY2FtYXJvbmFfYnVyZ2VyX19wYXBhc18xNzQ4Mjk2ODQ0eFU2TDVQLmpwZyJ9.BTtKoK3GrZMopsKyu2T2hF2brhE77BsY9Sa4nk_5RmU" class="img-fluid rounded" alt="Doble Camarona Burger + Papas">
+                                <h3 style="text-align: left; color: whitesmoke;">Doble Camarona Burger + Papas</h3>
+                                <p style="text-align: left; color: whitesmoke;">$ 15.190<br>Queso Crema, Tomates Confitados, Camarones Grillados Y Mayo Ciboulette.</p>
+                                <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
                             </div>
-                            <div class="col-sm-3 d-flex-justify-content-end"></div>
-                        </div>
-                    </div>    
-                    <div class="col-md-4">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="img.jpg" class="rounded" alt="Producto">
-                                </div>
-                                <div class="col">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-1 d-flex justify-content-start"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 d-flex justify-content-start"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="card p-3">
+                                    <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/doble_avocado_burger__papas_1746216015cnlBHl.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvZG9ibGVfYXZvY2Fkb19idXJnZXJfX3BhcGFzXzE3NDYyMTYwMTVjbmxCSGwuanBnIn0.Zql3ifZqIygWiqSHqucsPDeRpLRCRuBKaHkyGwyqVNo" class="img-fluid rounded" alt="Doble Avocado Burger + Papas">
+                                    <h3 style="text-align: left; color: whitesmoke;">Doble Avocado Burger + Papas</h3>
+                                    <p style="text-align: left; color: whitesmoke;">$ 15.590<br>Sobre Una Base De Rúcula Y Cubierta De Tocino, Queso Mozzarella, Palta En Abanico Y Mayo Ciboullette.</p>
+                                    <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
                             </div>
-                            <div class="col-sm-3 d-flex-justify-content-end"></div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="img.jpg" class="rounded" alt="Producto">
-                                </div>
-                                <div class="col">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-1 d-flex justify-content-start"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 d-flex justify-content-start"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="card p-3">
+                                <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/cuarto_burgus__papas__bebida_lata_1748281623N4J4b9.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvY3VhcnRvX2J1cmd1c19fcGFwYXNfX2JlYmlkYV9sYXRhXzE3NDgyODE2MjNONEo0YjkuanBnIn0.lK4gyS2kebuC_cJy6kqoF0qPvJIhB72fNCxCbHBY6P4" class="img-fluid rounded" alt="Producto">
+                                <h3 style="text-align: left; color: whitesmoke;">Cuarto Burgués + Papas + Bebida Lata</h3>
+                                <p style="text-align: left; color: whitesmoke;">$ 12.590<br>Queso Cheddar, Cebolla Morada, Mix De Pepinillos. Mayonesa Y Kepchup Bbq. <br>Incluye bebida en Lata</p>
+                                <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
                             </div>
-                            <div class="col-sm-3 d-flex-justify-content-end"></div>
+                            <div class="card p-3">
+                                <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/doble_clsica_new_yorker_1756606320NoJbn1.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvZG9ibGVfY2xzaWNhX25ld195b3JrZXJfMTc1NjYwNjMyME5vSmJuMS5qcGcifQ.JKB542PFjGqc5p-Qjc1ZOm1HR-pkyI6JEw-6FS-IMQc" class="img-fluid rounded" alt="Producto">
+                                <h3 style="text-align: left; color: whitesmoke;">Doble Clásica New Yorker</h3>
+                                <p style="text-align: left; color: whitesmoke;">$ 9.390<br>Doble Hamburguesa Smash, Salsa Especial De La Casa, Pepinillos, Cebolla, Lechuga, Tomate, Queso Cheddar.</p>
+                                <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
+                            </div>
                         </div>
                     </div>
                 </div>

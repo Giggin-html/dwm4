@@ -1,73 +1,139 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <title>Big Bite</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                background: #723d27;
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                font-family: "Georgia", serif;
+            }
+
+            .container {
+                margin-top: 90px;
+                background-color: #9e834f;
+                border-radius: 10px;
+                width: 90%;
+                padding: 20px 25px;
+            }
+
+            .container2 {
+                margin-top: 90px;
+                background-color: #9e834f;
+                border-radius: 10px;
+                width: 70%;
+                padding: 20px 25px;
+            }
+
+            table {
+            width: 100%;
+            border-collapse: collapse;
+            color: whitesmoke;
+            }
+
+            th, td {
+            border: 1px solid whitesmoke;
+            text-align: center;
+            padding: 8px;
+            color: whitesmoke;
+            }
+
+            .navbar-custom {
+                background-color: #522f14;
+            }
+
+            button {
+                background-color: #58352c;
+                border:#5A3E36;
+                border-radius: 10px;
+                text-align: center;
+                margin: 10px 2px;
+                padding: 7px 15px;
+                color: whitesmoke;
+            }
+
+            label {
+                color: whitesmoke;
+                border-radius: 10px;
+                max-width: 180px;
+            }
+        </style>
+        <script>
+            function mapa() {
+                const mapa = confirm("¿Desea ver el Mapa?");
+                if (mapa) {
+                    alert("Redireccion a Mapa");
+                }
+            }
+        </script>
     </head>
     <body>
-
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"></a>
-            </div>
-        </nav>
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="row">
-                        <div class="col-sm d-flex justify-content-end"></div>
+                    <div class="container border">
+                        <h4 style="color: whitesmoke">Pedidos Confirmados para Entrega</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td>Pedido</td>
+                                    <td>Cliente</td>
+                                    <td>Direccion</td>
+                                    <td>Estado</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>123</td>
+                                    <td>Anna</td>
+                                    <td>Direccion Anna</td>
+                                    <td>entregado</td>
+                                </tr>
+                                <tr>
+                                    <td>456</td>
+                                    <td>Hanna</td>
+                                    <td> Direccion Hanna</td>
+                                    <td>pendiente</td>
+                                </tr>
+                                <tr>
+                                    <td>789</td>
+                                    <td>Roberto</td>
+                                    <td>Direccion Roberto</td>
+                                    <td>pendiente</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" onclick="mapa()">Ver Mapa</button>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="row">
-                        <div class="col-md d-flex justify-content-start"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md d-flex justify-content-start"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md d-flex justify-content-start"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md d-flex justify-content-start"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md d-flex justify-content-start"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm d-flex justify-content-end"></div>
+                    <div class="container2 border" >
+                        <h5 style="color: whitesmoke">Nuevo Pedido Registrado</h5>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="pedido" class="form-label">Pedido: Clásica Burger + Papas + Bebida Lata </label>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="cliente" class="form-label">Cliente: Manuel</label>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="email" class="form-label">Direccion: Direccion Manuel</label>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="detalle" class="form-label">Estado: Pendiente</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md d-flex justify-content-end">
+                                <button type="button">Confirmar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>        
             </div>       
