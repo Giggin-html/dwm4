@@ -117,8 +117,8 @@
             <mxPoint x="685" y="260" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="S_FS7I3CNLD-lgZ6W5pM-32" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Supuesto 4:&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Agregar y eliminar usuario&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;como&lt;/font&gt; &lt;font style=&quot;font-size: 14px;&quot;&gt;administrador,&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;bloquear usuarios como cliente.&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="440" y="570" width="290" height="80" as="geometry" />
+        <mxCell id="S_FS7I3CNLD-lgZ6W5pM-32" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Supuesto 4:&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Agregar y eliminar&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 14px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;usuarios administradores,&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;bloquear y eliminar&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;usuarios clientes.&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="570" y="570" width="220" height="90" as="geometry" />
         </mxCell>
         <mxCell id="S_FS7I3CNLD-lgZ6W5pM-33" value="200: OK&lt;div&gt;400: Not Allowed&lt;/div&gt;&lt;div&gt;423 Locked&lt;br&gt;&lt;div&gt;404: Not Found&amp;nbsp;&lt;/div&gt;&lt;/div&gt;" style="html=1;whiteSpace=wrap;dashed=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="470" y="498" width="120" height="60" as="geometry" />
