@@ -149,7 +149,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="emOdoEsjV926fwIJ54Cw-88" value="Producto&lt;Usuario&gt;" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="2070" y="780" width="160" height="110" as="geometry">
+          <mxGeometry x="2070" y="780" width="160" height="138" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -161,6 +161,12 @@
         </mxCell>
         <mxCell id="emOdoEsjV926fwIJ54Cw-91" value="+ categoria: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="emOdoEsjV926fwIJ54Cw-88">
           <mxGeometry y="80" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="emOdoEsjV926fwIJ54Cw-101" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="emOdoEsjV926fwIJ54Cw-88">
+          <mxGeometry y="106" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="emOdoEsjV926fwIJ54Cw-102" value="+ Disponibilidad(): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="emOdoEsjV926fwIJ54Cw-88">
+          <mxGeometry y="114" width="160" height="24" as="geometry" />
         </mxCell>
         <mxCell id="emOdoEsjV926fwIJ54Cw-92" value="Precio&lt;Usuario&gt;" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="2290" y="780" width="160" height="110" as="geometry">
