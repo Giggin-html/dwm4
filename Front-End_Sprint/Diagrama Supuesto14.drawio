@@ -46,15 +46,15 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="q9bCWs3bljhiOa4F5r_n-56" value="Usuarioinput" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="250" y="410" width="180" height="80" as="geometry">
+          <mxGeometry x="275" y="410" width="130" height="80" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="q9bCWs3bljhiOa4F5r_n-57" value="+ email: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="q9bCWs3bljhiOa4F5r_n-56" vertex="1">
-          <mxGeometry y="26" width="180" height="26" as="geometry" />
+          <mxGeometry y="26" width="130" height="26" as="geometry" />
         </mxCell>
         <mxCell id="q9bCWs3bljhiOa4F5r_n-58" value="+ pass: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="q9bCWs3bljhiOa4F5r_n-56" vertex="1">
-          <mxGeometry y="52" width="180" height="26" as="geometry" />
+          <mxGeometry y="52" width="130" height="26" as="geometry" />
         </mxCell>
         <mxCell id="q9bCWs3bljhiOa4F5r_n-59" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="q9bCWs3bljhiOa4F5r_n-56" target="q9bCWs3bljhiOa4F5r_n-54" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
