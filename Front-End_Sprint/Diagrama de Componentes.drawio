@@ -682,6 +682,12 @@
         <mxCell id="u_97CZU_eicXRqz8oZMc-198" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;sketch=0;rotation=-180;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="856.5" y="971.9999999999999" width="10" height="16" as="geometry" />
         </mxCell>
+        <mxCell id="u_97CZU_eicXRqz8oZMc-200" value="Back End" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1100" y="511.58" width="220" height="168.42" as="geometry" />
+        </mxCell>
+        <mxCell id="u_97CZU_eicXRqz8oZMc-201" value="Api&lt;div&gt;Historial&lt;/div&gt;&lt;div&gt;Pedidos&lt;/div&gt;&lt;div&gt;Domicilio&lt;/div&gt;" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1186" y="550" width="110" height="80" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
