@@ -5,9 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
         <style>
             body {
@@ -48,31 +46,181 @@
             .navbar-custom {
                 background-color: #522f14;
             }
+            .card-bigbite {
+                background: #957b4a; 
+                border: 1px solid whitesmoke;
+                border-radius: 15px;
+                padding: 15px;
+                color: whitesmoke;
+                font-family: "Georgia", serif;
+            }
+
+            .card-horizontal {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+            }
+
+            .card-user-img {
+                width: 90px;
+                height: 90px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid whitesmoke;
+            }
+
         </style>
 
         <script>
-            function eliminar() {
-                let email = document.getElementById("emaile").value;
-                if (email == "Jorge@gmail.com") {
-                    alert("Usuario Eliminado");
-                } else {
-                    alert("Corrobore información");
+            let listaUsuarios = [];
+
+            function cargarUsuarios(){
+                let q = `
+                    query {
+                        getUsuarios {
+                            id
+                            email
+                            pass
+                            rol
+                        }
+                    }`;
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8159/graphql",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        query : q
+                    }),
+                    success: function(response){
+                        listaUsuarios = response?.data?.getUsuarios ?? [];
+                        renderUsuariosCards("contenedorAdmins", "ADMINISTRADOR");
+                        renderUsuariosCards("contenedorClientes", "CLIENTE");
+                    }
+                })
+            }
+
+            function renderUsuariosCards(containerId, tipo){ 
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                container.innerHTML = "";
+
+                const filtrados = listaUsuarios.filter(u => u.rol === tipo);
+
+                if (!Array.isArray(filtrados) || filtrados.length === 0){
+                    const emptyCard = document.createElement("div");
+                    emptyCard.className = "card";
+                    const header = document.createElement("div");
+                    const body = document.createElement("div");
+                    body.className = "card-body";
+                    body.textContent = "No se encontraron usuarios para mostrar";
+                    emptyCard.append(body);
+                    container.appendChild(emptyCard);
+                    return;
                 }
+
+                for (const u of filtrados){
+                    const card = document.createElement("div");
+                    card.className = "card mb-3 card-bigbite";
+                    const wrapper = document.createElement("div");
+                    wrapper.className = "card-horizontal";
+                    const img = document.createElement("img");
+                    img.src = "https://static.vecteezy.com/system/resources/previews/016/079/150/original/user-profile-account-or-contacts-silhouette-icon-isolated-on-white-background-free-vector.jpg";
+                    img.className = "card-user-img";
+                    const content = document.createElement("div");
+                    content.style.flex = "1";
+                    const body = document.createElement("div");
+                    body.className = "card-body";
+                    const p = document.createElement("p");
+                    const passText = (u?.pass ?? "") === "" ? "-" : String(u.pass);
+                    p.innerHTML = `
+                        <strong>Email:</strong> ${u.email}<br>
+                        <strong>Pass:</strong> ${passText}<br>
+                    `;
+                    body.appendChild(p);
+                    content.appendChild(body);
+                    wrapper.appendChild(img);
+                    wrapper.appendChild(content);
+                    card.append(wrapper);
+                    container.appendChild(card);
+                }
+            }
+
+            function eliminar() {
+                const email = document.getElementById("emaile").value;
+
+                const usuario = listaUsuarios.find(u => u.email === email);
+
+                if (!usuario) {
+                    alert("No se encontró un usuario con ese email");
+                    return;
+                }
+
+                const id = usuario.id;
+
+                let mutation = `
+                    mutation($id: ID!) {
+                        delUsuario(id: $id) {
+                            status
+                            message
+                        }
+                    }`;
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8159/graphql",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        query: mutation,
+                        variables: {
+                            id: id,
+                        }
+                    }),
+                    success: function(){
+                        alert("Usuario Eliminado Correctamente");
+                        cargarUsuarios();
+                    }
+                })
             }
 
             function agregar() {
                 let email = document.getElementById("Email").value;
                 let pasword = document.getElementById("Pwd2").value;
 
-                if (email == "juan3@gmail.com" && pasword == "12345") {
-                    alert("Usuario Agregado");
-                } else {
-                    alert("Corrobore información");
-                }
+                let mutation = `
+                    mutation($input: UsuarioInput!) {
+                        addUsuario(input: $input) {
+                            id
+                            email
+                            pass
+                            rol
+                        }
+                    }`;
+                
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8159/graphql",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        query: mutation,
+                        variables: {
+                            input: {
+                                email: email,
+                                pass: pasword,
+                                rol : "ADMINISTRADOR"
+                            }
+                        }
+                    }),
+                    success: function(){
+                        alert("Usuario Agregado Correctamente");
+                        cargarUsuarios();
+                    }
+                })
             }
 
             function bloquear() {
                 let email = document.getElementById("emailBloquear").value;
+
+                
                 if (email == "Morales@gmail.com") {
                     alert("Usuario Bloqueado");
                 } else {
@@ -82,7 +230,7 @@
         </script>
     </head>
 
-    <body>
+    <body onload="cargarUsuarios()">
         <nav class="navbar-custom navbar navbar-expand-sm navbar-dark fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Inicio Sesión</a>
@@ -94,53 +242,7 @@
                 <div class="col">
                     <div class="container border">
                         <h5 style="color: whitesmoke">Administradores</h5>
-                        <div class="container2 border">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="https://static.vecteezy.com/system/resources/previews/016/079/150/original/user-profile-account-or-contacts-silhouette-icon-isolated-on-white-background-free-vector.jpg" class="rounded img-fluid" alt="Usuario">
-                                </div>
-                                <div class="col">
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <label for="Email1">Usuario: Jorge@gmail.com</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Pwd1">Contraseña: *********</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="https://static.vecteezy.com/system/resources/previews/016/079/150/original/user-profile-account-or-contacts-silhouette-icon-isolated-on-white-background-free-vector.jpg" class="rounded img-fluid" alt="Usuario">
-                                </div>
-                                <div class="col">
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <label for="Email2">Usuario: mari3@gmail.cl</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Pwd2">Contraseña: ********</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="https://static.vecteezy.com/system/resources/previews/016/079/150/original/user-profile-account-or-contacts-silhouette-icon-isolated-on-white-background-free-vector.jpg" class="rounded img-fluid" alt="Usuario">
-                                </div>
-                                <div class="col">
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <label for="Email3">Usuario: Morales@gmail.com</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Pwd3">Contraseña: *********</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="container2 border" id="contenedorAdmins"></div>
                         <div class="row">
                             <div class="col-sm d-flex justify-content-start">
                                 <button type="button" data-toggle="modal" data-target="#A">Agregar</button>
@@ -153,38 +255,7 @@
                 <div class="col">
                     <div class="container border">
                         <h5 style="color: whitesmoke">Clientes</h5>
-                        <div class="container2 border">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="https://static.vecteezy.com/system/resources/previews/016/079/150/original/user-profile-account-or-contacts-silhouette-icon-isolated-on-white-background-free-vector.jpg" class="rounded img-fluid" alt="Usuario">
-                                </div>
-                                <div class="col">
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <label>Usuario: Marcos@gmail.cl</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Contraseña: ********</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="https://static.vecteezy.com/system/resources/previews/016/079/150/original/user-profile-account-or-contacts-silhouette-icon-isolated-on-white-background-free-vector.jpg" class="rounded img-fluid" alt="Usuario">
-                                </div>
-                                <div class="col">
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <label>Usuario: Monica@gmail.com</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Contraseña: *********</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="container2 border" id="contenedorClientes"></div>
                         <div class="row">
                             <div class="col-sm d-flex justify-content-start">
                                 <button type="button" data-toggle="modal" data-target="#B">Bloquear</button>

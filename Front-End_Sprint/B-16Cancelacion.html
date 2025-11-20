@@ -64,6 +64,77 @@
 
         </style>
         <script>
+            function cargarUsuarios(){
+                let q = `
+                    query {
+                        getUsuarios {
+                            id
+                            email
+                            pass
+                            rol
+                        }
+                    }`;
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8159/graphql",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        query : q
+                    }),
+                    success: function(response){
+                        listaUsuarios = response?.data?.getUsuarios ?? [];
+                        renderUsuariosCards("contenedorAdmins", "ADMINISTRADOR");
+                        renderUsuariosCards("contenedorClientes", "CLIENTE");
+                    }
+                })
+            }
+
+            function renderUsuariosCards(containerId, tipo){ 
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                container.innerHTML = "";
+
+                const filtrados = listaUsuarios.filter(u => u.rol === tipo);
+
+                if (!Array.isArray(filtrados) || filtrados.length === 0){
+                    const emptyCard = document.createElement("div");
+                    emptyCard.className = "card";
+                    const header = document.createElement("div");
+                    const body = document.createElement("div");
+                    body.className = "card-body";
+                    body.textContent = "No se encontraron usuarios para mostrar";
+                    emptyCard.append(body);
+                    container.appendChild(emptyCard);
+                    return;
+                }
+
+                for (const u of filtrados){
+                    const card = document.createElement("div");
+                    card.className = "card mb-3 card-bigbite";
+                    const wrapper = document.createElement("div");
+                    wrapper.className = "card-horizontal";
+                    const img = document.createElement("img");
+                    img.src = "https://static.vecteezy.com/system/resources/previews/016/079/150/original/user-profile-account-or-contacts-silhouette-icon-isolated-on-white-background-free-vector.jpg";
+                    img.className = "card-user-img";
+                    const content = document.createElement("div");
+                    content.style.flex = "1";
+                    const body = document.createElement("div");
+                    body.className = "card-body";
+                    const p = document.createElement("p");
+                    const passText = (u?.pass ?? "") === "" ? "-" : String(u.pass);
+                    p.innerHTML = `
+                        <strong>Email:</strong> ${u.email}<br>
+                        <strong>Pass:</strong> ${passText}<br>
+                    `;
+                    body.appendChild(p);
+                    content.appendChild(body);
+                    wrapper.appendChild(img);
+                    wrapper.appendChild(content);
+                    card.append(wrapper);
+                    container.appendChild(card);
+                }
+            }
+
             function eliminarProducto() {
                 const seleccionados = document.querySelectorAll('.check-producto:checked');
 

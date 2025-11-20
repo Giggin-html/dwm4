@@ -52,6 +52,80 @@
             }
         </style>
         <script>
+            function cargarPedidos(){
+                let q = `
+                    query {
+                        getPedidos {
+                            id
+                            fecha
+                            precio
+                            estado
+                            tamano
+                        }
+                    }`;
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8159/graphql",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        query : q
+                    }),
+                    success: function(response){
+                        renderPedidostabla(response, "contenedorPedidos");
+                    }
+                })
+            }
+
+            function renderPedidosTabla(response, containerId){ 
+                const pedidos = response?.data?.getPedidos ?? [];
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                container.textContent = "";
+
+                if (pedidos.length === 0){
+                    const p = document.createElement("p");
+                    p.textContent = "Sin pedidos registrados";
+                    container.appendChild(p);
+                    return;
+                }
+                const table = document.createElement("table");
+                table.className = "table";
+                const thead = document.createElement("thead");
+                const headerRow = document.createElement("tr");
+                ['Pedido', 'Fecha', 'Confirmado', 'Estado'].forEach((col) => {
+                    const th = document.createElement("th");
+                    th.textContent = col;
+                    headerRow.appendChild(th);
+                })
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+
+                const tbody = document.createElement("tbody");
+
+                for (const p of pedidos){
+                    const tr = document.createElement("tr");
+                    const tdId = document.createElement("td");
+                    const tdFecha = document.createElement("td");
+                    const tdConfirmado = document.createElement("td");
+                    const tdEstado = document.createElement("td");
+                    tdId.textContent = p.id ?? '';
+                    tdFecha.textContent = p.fecha ?? '';
+                    tdConfirmado.textContent = p.confirmado ?? '';
+                    tdEstado.textContent = p.estado ?? '';
+                    tr.appendChild(tdId);
+                    tr.appendChild(tdFecha);
+                    tr.appendChild(tdConfirmado);
+                    tr.appendChild(tdEstado);
+                    tbody.appendChild(tr);
+                }
+                table.appendChild(tbody);
+                table.style.borderCollapse = 'collapse';
+                table.querySelectorAll('th, td').forEach((cell) => {
+                    cell.style.border = '1px solid whitesmoke';
+                });
+                container.appendChild(table);
+            }
+
             function editar() {
             const ed = confirm("¿Desea editar estado del producto?");
             if (ed){

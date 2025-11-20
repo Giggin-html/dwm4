@@ -44,16 +44,50 @@
 
         </style>
         <script>
+            function detectarRol(email){
+                const lower = email.toLowerCase();
+
+                if (lower.endsWith("@bigbite.cl")) return "ADMINISTRADOR";
+                if (lower.endsWith("@local.cl")) return "CAJERO";
+                if (lower.endsWith("@encargado.cl")) return "ENCARGADO";
+
+                return "CLIENTE"; 
+            }
+
             function registrarse(){
                 let email = document.getElementById("email").value;
                 let pass = document.getElementById("pwd").value;
-                if (email == "giggin@example.com" && pass == "Prueba1"){
-                    location.href = "B-6Catalogo.html";
-                }
 
-                if (email == "Gigin23@example.com" && pass == "/Prueba_"){
-                    alert("La contraseña no cumple requisitos");
-                }
+                let rolDetectado = detectarRol(email);
+
+                let mutation = `
+                    mutation($input: UsuarioInput!) {
+                        addUsuario(input: $input) {
+                            id
+                            email
+                            pass
+                            rol
+                        }
+                    }`;
+                
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8159/graphql",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        query: mutation,
+                        variables: {
+                            input: {
+                                email: email,
+                                pass: pass,
+                                rol: rolDetectado
+                            }
+                        }
+                    }),
+                    success: function(){
+                        alert("Usuario registrado correctamente como: " + rolDetectado);
+                    }
+                })
             }
         </script>
     </head>
