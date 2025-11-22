@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <style>
             body {
                 padding-top: 60px;
@@ -59,6 +60,7 @@
                             id
                             fecha
                             precio
+                            confirmado
                             estado
                             tamano
                         }
@@ -71,7 +73,7 @@
                         query : q
                     }),
                     success: function(response){
-                        renderPedidostabla(response, "contenedorPedidos");
+                        renderPedidosTabla(response, "contenedorPedidos");
                     }
                 })
             }
@@ -109,8 +111,8 @@
                     const tdConfirmado = document.createElement("td");
                     const tdEstado = document.createElement("td");
                     tdId.textContent = p.id ?? '';
-                    tdFecha.textContent = p.fecha ?? '';
-                    tdConfirmado.textContent = p.confirmado ?? '';
+                    tdFecha.textContent = new Date(parseInt(p.fecha)).toLocaleDateString("es-CL");;
+                    tdConfirmado.textContent = p.confirmado === true ? "Sí" : "No";
                     tdEstado.textContent = p.estado ?? '';
                     tr.appendChild(tdId);
                     tr.appendChild(tdFecha);
@@ -127,7 +129,7 @@
             }
         </script>
     </head>
-    <body>
+    <body onload="cargarPedidos()">
 
         <nav class="navbar navbar-expand-sm navbar-dark fixed-top navbar-custom">
             <div class="container-fluid">

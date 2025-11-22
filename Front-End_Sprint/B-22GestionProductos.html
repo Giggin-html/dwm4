@@ -55,16 +55,21 @@
             }
         </style>
         <script>
+            listaProductos = [];
 
-            function cargarPedidos(){
+            let productoSeleccionadoId = null;
+            function seleccionarProducto(id) {
+                productoSeleccionadoId = id;
+            }
+
+            function cargarProductos(){
                     let q = `
                         query {
-                            getPedidos {
+                            getProductos {
                                 id
-                                fecha
+                                nombre
                                 precio
-                                estado
-                                tamano
+                                disponible
                             }
                         }`;
                     $.ajax({
@@ -75,20 +80,30 @@
                             query : q
                         }),
                         success: function(response){
-                            renderPedidostabla(response, "contenedorPedidos");
+                            listaProductos = response?.data?.getProductos ?? [];
+                            renderProductosTabla(listaProductos, "contenedorProductos");
                         }
                     })
                 }
 
-                function renderPedidosTabla(response, containerId){ 
-                    const pedidos = response?.data?.getPedidos ?? [];
+                function renderProductosTabla(productos, containerId){
                     const container = document.getElementById(containerId);
                     if (!container) return;
                     container.textContent = "";
 
-                    if (pedidos.length === 0){
-                        const p = document.createElement("p");
-                        p.textContent = "Sin pedidos registrados";
+                    if (!productoSeleccionadoId) {
+                        alert("Error: no se ha seleccionado ningún producto");
+                        return;
+                    }
+
+                    const formatoCLP = new Intl.NumberFormat("es-CL", {
+                    style: "currency",
+                    currency: "CLP"
+                });
+
+                    if (productos.length === 0){
+                        const p = document.createElement("p"); 
+                        p.textContent = "Sin productos registrados";
                         container.appendChild(p);
                         return;
                     }
@@ -96,7 +111,7 @@
                     table.className = "table";
                     const thead = document.createElement("thead");
                     const headerRow = document.createElement("tr");
-                    ['Pedido', 'Fecha', 'Confirmado', 'Estado'].forEach((col) => {
+                    ['Producto', 'Precio', 'Disponible', 'Accion'].forEach((col) => {
                         const th = document.createElement("th");
                         th.textContent = col;
                         headerRow.appendChild(th);
@@ -106,20 +121,27 @@
 
                     const tbody = document.createElement("tbody");
 
-                    for (const p of pedidos){
+                    for (const p of productos){
                         const tr = document.createElement("tr");
-                        const tdId = document.createElement("td");
-                        const tdFecha = document.createElement("td");
-                        const tdConfirmado = document.createElement("td");
-                        const tdEstado = document.createElement("td");
-                        tdId.textContent = p.id ?? '';
-                        tdFecha.textContent = p.fecha ?? '';
-                        tdConfirmado.textContent = p.confirmado ?? '';
-                        tdEstado.textContent = p.estado ?? '';
-                        tr.appendChild(tdId);
-                        tr.appendChild(tdFecha);
-                        tr.appendChild(tdConfirmado);
-                        tr.appendChild(tdEstado);
+                        const tdProducto = document.createElement("td");
+                        const precioCLP = document.createElement("td");
+                        const tdDisponible = document.createElement("td");
+                        const tdAccion = document.createElement("td");
+                        tdProducto.textContent = p.id ?? '';
+                        precioCLP.textContent = formatoCLP.format(p.precio) ?? '';
+                        tdDisponible.textContent = p.disponible ?? ''; 
+                        tdAccion.innerHTML = `
+                            <button type="button" 
+                                    class="btn" 
+                                    data-toggle="modal" 
+                                    data-target="#editarModal"
+                                    onclick="seleccionarProducto('${p.id}')">
+                                Editar
+                            </button>`;
+                        tr.appendChild(tdProducto);
+                        tr.appendChild(precioCLP);
+                        tr.appendChild(tdDisponible);
+                        tr.appendChild(tdAccion);
                         tbody.appendChild(tr);
                     }
                     table.appendChild(tbody);
@@ -129,19 +151,54 @@
                     });
                     container.appendChild(table);
                 }
+
             function edi(){
-                let nom = document.getElementById("nombreProducto").value.trim();
-                let pre = document.getElementById("precioProducto").value.trim();
-                
-                if (nom === "" || pre === "") {
-                    alert("Corrobore informacion");
-                } else{
-                    alert("Producto editado");
+                let nombre = document.getElementById("nombreProducto").value.trim();
+                let precio = document.getElementById("precioProducto").value.trim();
+                let disponible = document.getElementById("disponible").value === "Sí";
+
+                if (nombre === "" || precio === "") {
+                    alert("Faltan datos");
+                    return;
                 }
+                const prod = listaProductos.find(p => p.nombre === nombre);
+
+                if (!prod) {
+                    alert("Producto no encontrado");
+                    return;
+                }
+
+                let q = `
+                    mutation {
+                        updProducto(
+                            id: "${productoSeleccionadoId}",
+                            input: {
+                                nombre: "${nombre}",
+                                precio: ${precio},
+                                disponible: ${disponible}
+                            }
+                        ) {
+                            id
+                            nombre
+                            precio
+                            disponible
+                        }
+                    }`;
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8159/graphql",
+                    contentType: "application/json",
+                    data: JSON.stringify({ query: q }),
+                    success: function(response){
+                        alert("Producto editado");
+                        cargarProductos();
+                        $('#editarModal').modal('hide');
+                    }
+                });
             }
         </script>
     </head>
-    <body>
+    <body onload="cargarProductos()">
 
         <nav class="navbar navbar-expand-sm navbar-dark fixed-top navbar-custom">
             <div class="container-fluid">
@@ -149,46 +206,8 @@
             </div>
         </nav>
 
-        <div class="container border">
-            <div class="row">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Precio</th>
-                        <th>Disponible</th>
-                        <th>Acción</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Doble Clásica New Yorker</td>
-                            <td>$15.000</td>
-                            <td>Sí</td>
-                            <td>
-                                <button type="button" data-toggle="modal" data-target="#editarModal">Editar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Onion Rings (8 unds.)</td>
-                            <td>$12.300</td>
-                            <td>No</td>
-                            <td>
-                                <button type="button" data-toggle="modal" data-target="#editarModal">Editar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Camarones Butterfly</td>
-                            <td>$14.900</td>
-                            <td>No</td>
-                            <td>
-                                <button type="button" data-toggle="modal" data-target="#editarModal">Editar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>       
-        </div>
+        <div class="container border" id="contenedorProductos"></div>
+
         <div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="editarModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content" style="color:#5A3E36">

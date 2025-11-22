@@ -42,15 +42,14 @@
             }
         </style>
         <script>
-            function cargarPedidos(){
+            function cargarPedidosConfi(){
                 let q = `
                     query {
-                        getPedidos {
+                        getRegistroPedidosConfirmados {
                             id
+                            monto
                             fecha
-                            precio
-                            estado
-                            tamano
+                            MetododePago
                         }
                     }`;
                 $.ajax({
@@ -61,7 +60,7 @@
                         query : q
                     }),
                     success: function(response){
-                        renderPedidostabla(response, "contenedorPedidos");
+                        renderPedidostabla(response, "contenedorPedidosConfirmados");
                     }
                 })
             }
@@ -82,7 +81,7 @@
                 table.className = "table";
                 const thead = document.createElement("thead");
                 const headerRow = document.createElement("tr");
-                ['Pedido', 'Fecha', 'Confirmado', 'Estado'].forEach((col) => {
+                ['Pedido', 'Fecha', 'Monto', 'Metodo de Pago'].forEach((col) => {
                     const th = document.createElement("th");
                     th.textContent = col;
                     headerRow.appendChild(th);
@@ -94,18 +93,18 @@
 
                 for (const p of pedidos){
                     const tr = document.createElement("tr");
-                    const tdId = document.createElement("td");
+                    const tdPedido = document.createElement("td");
                     const tdFecha = document.createElement("td");
-                    const tdConfirmado = document.createElement("td");
-                    const tdEstado = document.createElement("td");
-                    tdId.textContent = p.id ?? '';
+                    const tdMonto = document.createElement("td");
+                    const tdMetododePago = document.createElement("td");
+                    tdId.textContent = p.pedido ?? '';
                     tdFecha.textContent = p.fecha ?? '';
-                    tdConfirmado.textContent = p.confirmado ?? '';
-                    tdEstado.textContent = p.estado ?? '';
-                    tr.appendChild(tdId);
+                    tdConfirmado.textContent = p.monto ?? '';
+                    tdEstado.textContent = p.metododePago ?? '';
+                    tr.appendChild(tdPedido);
                     tr.appendChild(tdFecha);
-                    tr.appendChild(tdConfirmado);
-                    tr.appendChild(tdEstado);
+                    tr.appendChild(tdMonto);
+                    tr.appendChild(tdMetododePago);
                     tbody.appendChild(tr);
                 }
                 table.appendChild(tbody);
@@ -117,63 +116,14 @@
             }
         </script>
     </head>
-    <body>
+    <body onload="cargarPedidosConfi()">
 
-        
         <nav class="navbar navbar-expand-sm navbar-dark fixed-top navbar-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Pedidos Confirmados</a>
             </div>
         </nav>
 
-        <div class="container">
-            <div class="row">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th colspan="4">Compras</th>
-                    </tr>
-                    <tr>
-                        <td>Pedido</td>
-                        <td>Fecha</td>
-                        <td>Monto</td>
-                        <td>Metodo de Pago</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>123</td>
-                            <td>10/11/2014</td>
-                            <td>$ 13.900</td>
-                            <td>Tarjeta Fisica(Debito)</td>
-                        </tr>
-                        <tr>
-                            <td>675</td>
-                            <td>20/11/2014</td>
-                            <td>$ 12.990</td>
-                            <td>WebPay</td>
-                        </tr>
-                        <tr>
-                            <td>098</td>
-                            <td>23/11/2014</td>
-                            <td>$10.000</td>
-                            <td>Tarjeta Fisica(Debito)</td>
-                        </tr>
-                        <tr>
-                            <td>432</td>
-                            <td>05/12/2014</td>
-                            <td>$7.800</td>
-                            <td>WebPay</td>
-                        </tr>
-                        <tr>
-                            <td>789</td>
-                            <td>10/12/2014</td>
-                            <td>$13.000</td>
-                            <td>Tarjeta Fisica(Credito)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>           
-        </div>
+        <div class="container" id="contenedorPedidosConfirmados"></div>
     </body>
 </html>

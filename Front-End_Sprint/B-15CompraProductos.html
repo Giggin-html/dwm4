@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <style>
             body {
                 padding-top: 60px;
@@ -78,14 +79,14 @@
             }
         </style>
         <script>
-            function cargarUsuarios(){
+            function cargarCarro(){
                 let q = `
                     query {
-                        getUsuarios {
+                        getCarrito {
                             id
-                            email
-                            pass
-                            rol
+                            producto
+                            monto
+                            pedido
                         }
                     }`;
                 $.ajax({
@@ -96,61 +97,54 @@
                         query : q
                     }),
                     success: function(response){
-                        listaUsuarios = response?.data?.getUsuarios ?? [];
-                        renderUsuariosCards("contenedorAdmins", "ADMINISTRADOR");
-                        renderUsuariosCards("contenedorClientes", "CLIENTE");
+                        renderCarroCard(response, "contenedorP");
                     }
                 })
             }
 
-            function renderUsuariosCards(containerId, tipo){ 
+            function renderCarroCard(response, containerId){ 
+                const carrito = response?.data?.getCarrito ?? [];
                 const container = document.getElementById(containerId);
                 if (!container) return;
                 container.innerHTML = "";
 
-                const filtrados = listaUsuarios.filter(u => u.rol === tipo);
+                const formatoCLP = new Intl.NumberFormat("es-CL", {
+                    style: "currency",
+                    currency: "CLP"
+                });
 
-                if (!Array.isArray(filtrados) || filtrados.length === 0){
+                if (!Array.isArray(carrito) || carrito.length === 0){
                     const emptyCard = document.createElement("div");
                     emptyCard.className = "card";
                     const header = document.createElement("div");
                     const body = document.createElement("div");
                     body.className = "card-body";
-                    body.textContent = "No se encontraron usuarios para mostrar";
+                    body.textContent = "No se encontraron productos para mostrar";
                     emptyCard.append(body);
                     container.appendChild(emptyCard);
                     return;
                 }
 
-                for (const u of filtrados){
+                for (const u of carrito){
                     const card = document.createElement("div");
-                    card.className = "card mb-3 card-bigbite";
-                    const wrapper = document.createElement("div");
-                    wrapper.className = "card-horizontal";
-                    const img = document.createElement("img");
-                    img.src = "https://static.vecteezy.com/system/resources/previews/016/079/150/original/user-profile-account-or-contacts-silhouette-icon-isolated-on-white-background-free-vector.jpg";
-                    img.className = "card-user-img";
-                    const content = document.createElement("div");
-                    content.style.flex = "1";
+                    card.className = "card mb-3";
                     const body = document.createElement("div");
                     body.className = "card-body";
+                    const precioCLP = formatoCLP.format(u.precio);
                     const p = document.createElement("p");
-                    const passText = (u?.pass ?? "") === "" ? "-" : String(u.pass);
                     p.innerHTML = `
-                        <strong>Email:</strong> ${u.email}<br>
-                        <strong>Pass:</strong> ${passText}<br>
+                        <strong>${u.nombre}</strong><br>
+                        ${precioCLP}<br>
+                        ${u.descripcion}<br>
                     `;
                     body.appendChild(p);
-                    content.appendChild(body);
-                    wrapper.appendChild(img);
-                    wrapper.appendChild(content);
-                    card.append(wrapper);
+                    card.appendChild(body);
                     container.appendChild(card);
                 }
             }
         </script>
     </head>
-    <body>
+    <body onload="cargarCarro()">
 
         <nav class="navbar navbar-expand-sm navbar-dark fixed-top navbar-custom">
             <div class="container-fluid">
@@ -161,40 +155,7 @@
 
         <div class="container-fluid">
             <div class="row d-flex justify-content-center">
-                <div class="container2 border">
-                    <div class="card p-3">
-                        <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/doble_clsica_new_yorker_1756606320NoJbn1.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvZG9ibGVfY2xzaWNhX25ld195b3JrZXJfMTc1NjYwNjMyME5vSmJuMS5qcGcifQ.JKB542PFjGqc5p-Qjc1ZOm1HR-pkyI6JEw-6FS-IMQc" class="img-fluid rounded" alt="Producto">
-                        <h3 style="text-align: left; color: whitesmoke;">Doble Clásica New Yorker</h3>
-                        <p style="text-align: left; color: whitesmoke;">$ 9.390<br>Doble Hamburguesa Smash, Salsa Especial De La Casa, Pepinillos, Cebolla, Lechuga, Tomate, Queso Cheddar.</p>
-                        <div class="form-check">
-                            <input class="form-check-input check-producto" type="checkbox" id="check1">
-                            <label class="form-check-label text-white" for="check1">Seleccionar</label>
-                        </div>
-                        <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
-                    </div>
-
-                    <div class="card p-2">
-                        <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/clsica_burger__papas__bebida_lata_1748280809UR0wmL.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvY2xzaWNhX2J1cmdlcl9fcGFwYXNfX2JlYmlkYV9sYXRhXzE3NDgyODA4MDlVUjB3bUwuanBnIn0.8sQoH-5OTpylN7Ss6v0qsgHbmvq3jiQugoTtMrFoMxI" class="img-fluid rounded" alt="Clásica Burger + Papas + Bebida Lata">
-                        <h3 style="text-align: left; color: whitesmoke;">Clásica Burger + Papas + Bebida Lata</h3>
-                        <p style="text-align: left; color: whitesmoke;">$ 12.590<br>Base De Lechuga Escarola Y Tomate, Queso Cheddar, Cebolla Morada, Pepinillos y Mayonesa.<br> Incluye una bebida en lata.</p>
-                        <div class="form-check">
-                            <input class="form-check-input check-producto" type="checkbox" id="check2">
-                            <label class="form-check-label text-white" for="check2">Seleccionar</label>
-                        </div>
-                        <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
-                    </div>
-
-                    <div class="card p-3">
-                        <img src="https://cdn.mer-cat.com/laburguesia/400x400/img/products/cuarto_burgus__papas__bebida_lata_1748281623N4J4b9.jpg?pass=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNDAweDQwMC9pbWcvcHJvZHVjdHMvY3VhcnRvX2J1cmd1c19fcGFwYXNfX2JlYmlkYV9sYXRhXzE3NDgyODE2MjNONEo0YjkuanBnIn0.lK4gyS2kebuC_cJy6kqoF0qPvJIhB72fNCxCbHBY6P4" class="img-fluid rounded" alt="Producto">
-                        <h3 style="text-align: left; color: whitesmoke;">Cuarto Burgués + Papas + Bebida Lata</h3>
-                        <p style="text-align: left; color: whitesmoke;">$ 12.590<br>Queso Cheddar, Cebolla Morada, Mix De Pepinillos. Mayonesa Y Kepchup Bbq. <br>Incluye bebida en Lata</p>
-                        <div class="form-check">
-                            <input class="form-check-input check-producto" type="checkbox" id="check3">
-                            <label class="form-check-label text-white" for="check3">Seleccionar</label>
-                        </div>
-                        <button type="button" onclick="location.href='B-15CompraProductos.html'">Comprar</button>
-                    </div>
-
+                <div class="container2 border" id="contendorP">
                     <div class="d-flex justify-content-end mt-3" style="grid-column: 1 / -1;">
                         <button type="button" onclick="location.href='B-9PagoDigital.html'">Confirmar</button>
                     </div>
